@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Shoe Haven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #343a40;
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .navbar {
+            padding: 1.5rem;
+        }
+
+        /* Login Section */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://img.freepik.com/premium-photo/close-up-pair-shoes-with-number-3-sole_1192032-3554.jpg') no-repeat center center/cover;
+        }
+
+        .login-form {
+            background: rgba(231, 224, 224, 0.85);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #343a40;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 0.8rem;
+            font-size: 1rem;
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .forgot-password a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .create-account {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .create-account a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 576px) {
+            .login-form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Shoe Haven</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login to Shoe Haven</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div class="forgot-password">
+                <p><a href="#">Forgot Password?</a></p>
+            </div>
+            <div class="create-account">
+                <p>New to Shoe Haven? <a href="./create.html">Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Get stored user data from local storage
+            const storedUser = JSON.parse(localStorage.getItem('user'));
+
+            if (storedUser) {
+                // Check if email and password match
+                if (storedUser.email === email && storedUser.password === password) {
+                    alert('Login successful!');
+                    window.location.href = './one.html';  // Redirect to the home page or dashboard
+                } else {
+                    alert('Invalid email or password!');
+                }
+            } else {
+                alert('No account found. Please sign up.');
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
